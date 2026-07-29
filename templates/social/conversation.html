@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% load static %}{% block title %}Message @{{ contact.username }} · NullSec Network{% endblock %}
+{% block head %}<script src="{% static 'js/crypto.js' %}" defer></script>{% endblock %}
+{% block content %}<section id="conversation" class="conversation" data-username="{{ user.username }}" data-contact="{{ contact.username }}" data-key-url="{% url 'key_api' %}" data-message-url="{% url 'message_api' contact.username %}" data-read-url="{% url 'mark_conversation_read' contact.username %}">
+  <header class="conversation-head"><div><a href="{% url 'profile' contact.username %}"><h1>{{ contact.profile.display_name|default:contact.username }}</h1></a><span class="muted">@{{ contact.username }}</span></div><span class="secure-badge">Browser-encrypted</span></header>
+  <div id="crypto-status" class="notice" role="status">Preparing local encryption…</div>
+  <details class="fingerprints"><summary>Safety fingerprints</summary><p>Your key: <code id="own-fingerprint">loading</code></p><p>Contact key: <code id="contact-fingerprint">loading</code></p><p>Compare these fingerprints with your contact through a separate trusted channel.</p></details>
+  <div id="key-warning" class="alert error hidden" role="alert">Warning: this contact’s public key changed. Verify the new fingerprint through a trusted channel before continuing. <button id="accept-key" class="button danger small" type="button">I verified this key</button></div>
+  <div id="message-list" class="message-list" aria-live="polite"></div>
+  <form id="message-form" class="message-form"><label class="sr-only" for="message-input">Private message</label><textarea id="message-input" maxlength="4000" rows="2" placeholder="Encrypted before sending" required disabled></textarea><button id="send-button" class="button" type="submit" disabled>Send</button></form>
+  <p class="muted small-text">Messages refresh every 5 seconds. Loss of local browser data may make message history unreadable.</p>
+</section>{% endblock %}

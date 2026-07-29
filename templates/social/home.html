@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block title %}NullSec Network — private by design{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">Small. Open. Self-hostable.</p>
+  <h1>A social network where private messages stay private.</h1>
+  <p class="lead">Public posts for community. End-to-end encrypted private conversations, handled by your browser. Deployable on a free PythonAnywhere account.</p>
+  <div class="actions"><a class="button" href="{% url 'signup' %}">Create an account</a><a class="button secondary" href="{% url 'about' %}">How it works</a></div>
+</section>
+<section class="grid three">
+  <article class="card"><h2>Browser encryption</h2><p>Private-message plaintext is encrypted before transmission with Web Crypto API primitives.</p></article>
+  <article class="card"><h2>Minimal stack</h2><p>Django, SQLite, WSGI and local static files. No cloud service, CDN or permanent process.</p></article>
+  <article class="card"><h2>Honest scope</h2><p>This educational project is not audited and is not a replacement for Signal or other mature messengers.</p></article>
+</section>
+{% endblock %}

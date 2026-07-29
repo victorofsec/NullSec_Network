@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block title %}Feed · NullSec Network{% endblock %}{% block content %}
+<div class="layout"><section><div class="card composer"><h1>Your feed</h1><p class="muted">Ranked by community likes, then recency. Mark a post Seen to move it to your viewing history.</p><form method="post" class="stack">{% csrf_token %}{{ form.body }}{{ form.body.errors }}<div class="form-row"><span class="muted">Plain-text public post · 1,000 characters</span><button class="button small" type="submit">Publish</button></div></form></div>
+{% for post in page %}{% include 'social/post_card.html' %}{% empty %}<div class="empty">Follow people or visit Explore to fill your feed.</div>{% endfor %}{% include 'social/pagination.html' %}</section>
+<aside class="card sidebar"><h2>Privacy note</h2><p>Posts are public and stored in plain text. Only private messages use end-to-end encryption.</p></aside></div>
+{% endblock %}

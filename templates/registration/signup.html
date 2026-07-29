@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block title %}Join · NullSec Network{% endblock %}{% block content %}
+<section class="narrow card"><h1>Create an account</h1><form method="post" class="stack">{% csrf_token %}{{ form.as_div }}<button class="button" type="submit">Join NullSec</button></form><p class="muted">Your private-message key is generated in this browser when you first open a conversation.</p></section>
+{% endblock %}

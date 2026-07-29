@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block title %}Edit profile · NullSec Network{% endblock %}{% block content %}<section class="narrow card"><h1>Edit profile</h1><form method="post" class="stack">{% csrf_token %}{{ form.as_div }}<button class="button" type="submit">Save profile</button></form></section>{% endblock %}

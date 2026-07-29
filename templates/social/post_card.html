@@ -1,0 +1,9 @@
+<article class="card post">
+  <header><div><a class="author" href="{% url 'profile' post.author.username %}">{{ post.author.profile.display_name|default:post.author.username }}</a> <span class="muted">@{{ post.author.username }}</span></div><time datetime="{{ post.created_at|date:'c' }}">{{ post.created_at|date:'M j, Y H:i' }} UTC</time></header>
+  <p class="post-body">{{ post.body|linebreaksbr }}</p>
+  <footer class="post-actions">
+    {% if post.author != user %}<form method="post" action="{% url 'like_toggle' post.id %}" class="inline-form">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button class="post-action{% if post.is_liked %} active{% endif %}" type="submit" aria-pressed="{% if post.is_liked %}true{% else %}false{% endif %}">♥ <span>{{ post.like_count }}</span> {% if post.is_liked %}Liked{% else %}Like{% endif %}</button></form>{% else %}<span class="post-stat">♥ {{ post.like_count }} likes</span>{% endif %}
+    <form method="post" action="{% url 'seen_toggle' post.id %}" class="inline-form">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}">{% if in_seen_history %}<input type="hidden" name="undo" value="1"><button class="post-action" type="submit">Restore to feed</button>{% else %}<button class="post-action" type="submit">Seen</button>{% endif %}</form>
+    {% if post.author == user %}<form method="post" action="{% url 'delete_post' post.id %}" class="inline-form confirm-delete">{% csrf_token %}<button class="danger-link" type="submit">Delete</button></form>{% else %}<a href="{% url 'report_post' post.id %}">Report</a>{% endif %}
+  </footer>
+</article>
