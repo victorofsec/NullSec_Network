@@ -4,6 +4,20 @@ NullSec Network is a small open-source social network for public text posts and 
 
 > **Français — résumé.** NullSec Network est un réseau social léger et auto-hébergeable. Les publications sont publiques et stockées en clair, tandis que les messages privés sont chiffrés dans le navigateur avant tout envoi. Le projet défend la confidentialité des communications légales et s’oppose au scan généralisé côté client associé aux propositions dites « Chat Control ». Il est indépendant, sans affiliation officielle avec un autre groupe appelé NullSec, non audité et ne prétend pas remplacer Signal.
 
+## Screenshots
+
+### Public landing page
+
+![NullSec Network public landing page](docs/screenshots/home.png)
+
+### Private conversation inbox
+
+![NullSec Network conversation list with unread-message badges](docs/screenshots/messages.png)
+
+### Ranked public feed
+
+![NullSec Network public feed with likes and Seen controls](docs/screenshots/feed.png)
+
 ## Why this project exists
 
 Small communities should be able to inspect, fork and operate their own social software without buying managed databases, queues or cloud storage. NullSec Network demonstrates that useful privacy properties can fit into a modest, understandable deployment.
